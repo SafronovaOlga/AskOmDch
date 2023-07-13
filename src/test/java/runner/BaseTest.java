@@ -7,11 +7,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
+import java.lang.reflect.Method;
 import java.time.Duration;
 
 public abstract class BaseTest {
     private WebDriver driver;
     private WebDriverWait wait;
+    private WebDriverWait wait10;
 
     @BeforeMethod
     protected void beforeMethod() {
@@ -35,5 +37,12 @@ public abstract class BaseTest {
             wait = new WebDriverWait(getDriver(), Duration.ofSeconds(5));
         }
         return wait;
+    }
+    public WebDriverWait getWait10() {
+
+        if (wait10 == null) {
+            wait10 = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
+        }
+        return wait10;
     }
 }
