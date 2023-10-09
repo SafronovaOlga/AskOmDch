@@ -6,13 +6,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import runner.base.BaseTest;
 
 import java.util.List;
 
 import static org.testng.Assert.assertTrue;
 import static org.testng.Assert.fail;
 
-public class TitleTest extends BaseTest{
+public class TitleTest extends BaseTest {
 
     @Test
     public void testCheckSiteTitle(){
