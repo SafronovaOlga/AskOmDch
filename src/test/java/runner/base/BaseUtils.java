@@ -1,6 +1,5 @@
-package runner;
+package runner.base;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -19,20 +18,20 @@ public final class BaseUtils {
    private static final String PROP_CHROME_OPTIONS = PREFIX_PROP + ENV_CHROME_OPTIONS.toLowerCase();
 
    private static Properties properties;
-    private static final ChromeOptions chromeOptions;
-    static {
-        initProperties();
-
-        chromeOptions = new ChromeOptions();
-        String options = properties.getProperty(PROP_CHROME_OPTIONS);
-        if (options != null) {
-            for (String argument : options.split(";")) {
-                chromeOptions.addArguments(argument);
-            }
-        }
-
-        WebDriverManager.chromedriver().setup();
-    }
+    private static final ChromeOptions chromeOptions = new ChromeOptions();
+//    static {
+//        initProperties();
+//
+//        chromeOptions = new ChromeOptions();
+//        String options = properties.getProperty(PROP_CHROME_OPTIONS);
+//        if (options != null) {
+//            for (String argument : options.split(";")) {
+//                chromeOptions.addArguments(argument);
+//            }
+//        }
+//
+//        WebDriverManager.chromedriver().setup();
+ //   }
 
     private static void initProperties() {
         if (properties == null) {
@@ -69,9 +68,9 @@ public final class BaseUtils {
         return System.getenv("CI_RUN") != null;
     }
 
-    static WebDriver createDriver() {
-        return new ChromeDriver(chromeOptions);
-    }
+//    static WebDriver createDriver() {
+//        return new ChromeDriver(chromeOptions);
+//    }
 
     public static void log(String str) {
         System.out.println(str);
@@ -80,5 +79,9 @@ public final class BaseUtils {
     public static void logf(String str, Object... arr) {
         System.out.printf(str, arr);
         System.out.println();
+    }
+
+    public static WebDriver createDriver() {
+        return new ChromeDriver(chromeOptions);
     }
 }
